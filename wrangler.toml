@@ -1,0 +1,9 @@
+name = "wrangler"
+main = "src/index.ts"
+compatibility_date = "2023-03-14"
+node_compat = true
+site = { bucket = "./public" }
+
+routes = [
+	{ pattern = "testing123.koord.io", custom_domain = true, zone_name = "koord.io" }
+]

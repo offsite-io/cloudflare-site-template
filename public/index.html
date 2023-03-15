@@ -1,0 +1,66 @@
+<html lang="en">
+
+<head>
+    <meta charSet="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossOrigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.form.io/formiojs/formio.form.min.css" crossOrigin="anonymous">
+    </link>
+    <title>AGRF Summit 2023</title>
+</head>
+
+<body>
+    <div class="container d-flex align-items-center justify-content-center">
+        <div class="px-4 py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="https://app.koord.io/koordio_icon_dark.svg" alt="" width="200" />
+            <h1 class="display-5 fw-bold">AGRF Summit 2023</h1>
+            <p class="text-muted">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-geo-alt-fill mr-1" viewBox="0 0 16 16">
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                </svg>
+                <a class="text-reset" target="_blank" href="https://maps.google.com/?q=Nairobi, Kenya">
+                    Nairobi, Kenya
+                </a>
+            </p>
+            <p class="text-muted">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-calendar-fill mr-1" viewBox="0 0 16 16">
+                    <path
+                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5z" />
+                </svg>
+                Wed Sep 20 2023
+            </p>
+        </div>
+    </div>
+    <div class="container border rounded mb-4">
+
+        <div class="container mb-5">
+            <h2 class="display-7 fw-bold my-5">Register</h2>
+            <div class="w-100 text-left">
+                <div id="formio"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossOrigin="anonymous"></script>
+    <script src="https://cdn.form.io/formiojs/formio.form.min.js" crossOrigin="anonymous"></script>
+    <script>
+        const syncSub = (sub) => { fetch("https://app.koord.io/api/contacts/register?eventId=1", { method: "PUT", body: JSON.stringify(sub) }); }
+    </script>
+    <script>
+        const submit = (sub) => { document.getElementById('formio').innerHTML = "Thank you for your registering! 👋"; syncSub(sub); }
+    </script>
+    <script>
+        const register = () => Formio.createForm(document.getElementById('formio'), 'https://formio.devpieter.co.za/register-1').then((form) => { form.on('submitDone', function (submission) { submit(submission); }); });
+    </script>
+    <script>
+        window.addEventListener("load", () => register())
+    </script>
+</body>
+
+</html>
