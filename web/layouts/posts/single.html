@@ -1,0 +1,15 @@
+{{ define "main" }}
+
+<section id="main">
+    <h1 id="title">{{ .Title }}</h1>
+    <div>
+        <article id="content">
+            {{ .Content }}
+        </article>
+    </div>
+    {{ if .Params.Formio }}
+    <script src="{{ .Params.Formio }}"></script>
+    {{ end }}
+</section>
+
+{{ end }}
